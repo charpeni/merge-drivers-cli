@@ -1,0 +1,54 @@
+{
+  "name": "merge-drivers",
+  "version": "1.0.0",
+  "description": "TODO",
+  "bugs": {
+    "url": "https://github.com/charpeni/merge-drivers/issues"
+  },
+  "homepage": "https://github.com/charpeni/merge-drivers",
+  "readme": "https://github.com/charpeni/merge-drivers#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charpeni/merge-drivers.git"
+  },
+  "type": "module",
+  "exports": "./index.js",
+  "bin": "index.js",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "type-check": "tsc",
+    "prepare": "husky install"
+  },
+  "author": "Nicolas Charpentier <nicolas.charpentier079@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.7",
+    "eslint": "^8.51.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
+    "prettier": "3.0.3",
+    "typescript": "5.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md}": [
+      "prettier --write"
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+version: 2.1
+
+executors:
+  default:
+    docker:
+      - image: cimg/node:20.8
+    working_directory: ~/merge-drivers
+
+commands:
+  save-cache:
+    steps:
+      - save_cache:
+          name: Save pnpm Package Cache
+          key: pnpm-packages-k1yI3YDr9euksYqaJNQ_y-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - node_modules
+  restore-cache:
+    steps:
+      - restore_cache:
+          name: Restore pnpm Package Cache
+          keys:
+            - pnpm-packages-k1yI3YDr9euksYqaJNQ_y-{{ checksum "pnpm-lock.yaml" }}
+            - pnpm-packages-k1yI3YDr9euksYqaJNQ_y
+  attach-workspace:
+    steps:
+      - attach_workspace:
+          at: ~/merge-drivers
+
+jobs:
+  checkout:
+    executor: default
+    steps:
+      - checkout
+      - restore-cache
+      - run:
+          name: pnpm version
+          command: pnpm --version
+      - run:
+          name: pnpm Install
+          command: |
+            pnpm install
+      - save-cache
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  lint:
+    executor: default
+    steps:
+      - attach-workspace
+      - run:
+          name: Lint
+          command: pnpm lint
+  type-check:
+    executor: default
+    steps:
+      - attach-workspace
+      - run:
+          name: Type Check
+          command: pnpm type-check
+
+workflows:
+  tests:
+    jobs:
+      - checkout
+      - lint:
+          requires:
+            - checkout
+      - type-check:
+          requires:
+            - checkout
