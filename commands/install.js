@@ -1,28 +1,37 @@
+import { execa } from 'execa';
+
 import { action } from '../utils/action.js';
+import { getEnabledMergeDriversFromConfig } from '../utils/getMergeDriversFromConfig.js';
 
 /**
- * @param {number | undefined} milliseconds
+ * Installs merge drivers based on the provided config.
+ *
+ * @param {import("../utils/config.js").Config} config
  */
-function wait(milliseconds) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, milliseconds);
-  });
-}
+export async function install(config) {
+  const mergeDriversToInstall = getEnabledMergeDriversFromConfig(config);
 
-export async function install() {
-  console.log('Intro message');
+  const errors = [];
 
-  const errors = [
-    await action('Install 1', async () => {
-      await wait(3000);
-    }),
-    await action('Install 3', () => {
-      throw new Error('STOP');
-    }),
-    await action('Install 2', async () => {
-      await wait(3000);
-    }),
-  ];
+  // eslint-disable-next-line no-restricted-syntax -- Executing promises sequentially is exactly what we want here to avoid race conditions wit git.
+  for (const [key, mergeDriver] of mergeDriversToInstall) {
+    errors.push(
+      // eslint-disable-next-line no-await-in-loop -- Executing promises sequentially is exactly what we want here to avoid race conditions wit git.
+      await action(`Install ${key}`, async () => {
+        try {
+          await execa(`git config merge.${key}.name "${mergeDriver.name}"`, {
+            shell: true,
+          });
+          await execa(
+            `git config merge.${key}.driver "${mergeDriver.driver}"`,
+            { shell: true },
+          );
+        } catch (error) {
+          throw new Error(`Installation of ${key} failed`, { cause: error });
+        }
+      }),
+    );
+  }
 
   if (errors.some((error) => error !== undefined)) {
     process.exit(1);

@@ -4,7 +4,7 @@ import ora from 'ora';
  * Executes an async function using ora to display a spinner.
  *
  * @param {string} title - Title used to describe the action.
- * @param {() => Promise<string | void>} asyncFunction - Async function to be executed.
+ * @param {() => Promise<unknown | void>} asyncFunction - Async function to be executed.
  */
 export async function action(title, asyncFunction) {
   const spinner = ora(title).start();
@@ -18,4 +18,6 @@ export async function action(title, asyncFunction) {
 
     return error;
   }
+
+  return undefined;
 }

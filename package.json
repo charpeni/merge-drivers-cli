@@ -28,7 +28,8 @@
   "dependencies": {
     "commander": "^11.1.0",
     "execa": "^8.0.1",
-    "ora": "^7.0.1"
+    "ora": "^7.0.1",
+    "yaml": "^2.3.3"
   },
   "devDependencies": {
     "@types/node": "^20.8.7",
