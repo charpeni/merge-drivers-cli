@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import YAML from 'yaml';
 
 /**
@@ -60,10 +61,12 @@ export function assertConfigIsValid(config) {
 /**
  * Reads the configuration from the specified `filePath` and returns it as an asserted `Config` object.
  *
- * @param {string} filePath
+ * @param {string} fileName
  * @returns {Config}
  */
-export function readConfig(filePath) {
+export function readConfig(fileName) {
+  const filePath = path.resolve(process.cwd(), fileName);
+
   if (!fs.existsSync(filePath)) {
     throw new Error(`Config file not found: ${filePath}`);
   }

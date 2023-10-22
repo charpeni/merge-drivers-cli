@@ -6,7 +6,7 @@ import { uninstall } from './commands/uninstall.js';
 
 import { readConfig } from './utils/config.js';
 
-const config = readConfig('./.merge-drivers.yml');
+const config = readConfig('.merge-drivers.yml');
 const program = new Command();
 
 program.description('TODO');
