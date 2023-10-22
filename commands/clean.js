@@ -1,7 +1,7 @@
 import { execa } from 'execa';
 
 import { action } from '../utils/action.js';
-import { getDisabledmergeDriversFromConfig } from '../utils/getMergeDriversFromConfig.js';
+import { getDisabledMergeDriversFromConfig } from '../utils/getMergeDriversFromConfig.js';
 
 /**
  * Cleans merge drivers by uninstalling the ones that are disabled based on the provided config.
@@ -9,7 +9,7 @@ import { getDisabledmergeDriversFromConfig } from '../utils/getMergeDriversFromC
  * @param {import("../utils/config.js").Config} config
  */
 export async function clean(config) {
-  const mergeDriversToClean = getDisabledmergeDriversFromConfig(config);
+  const mergeDriversToClean = getDisabledMergeDriversFromConfig(config);
 
   const errors = [];
 

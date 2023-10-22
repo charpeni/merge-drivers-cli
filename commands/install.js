@@ -1,15 +1,28 @@
 import { execa } from 'execa';
 
 import { action } from '../utils/action.js';
-import { getEnabledMergeDriversFromConfig } from '../utils/getMergeDriversFromConfig.js';
+import {
+  getEnabledMergeDriversFromConfig,
+  getEnabledMergeDriversFromConfigMatchingKeys,
+} from '../utils/getMergeDriversFromConfig.js';
 
 /**
  * Installs merge drivers based on the provided config.
  *
  * @param {import("../utils/config.js").Config} config
+ * @param {string[]} mergeDriversArgument
  */
-export async function install(config) {
-  const mergeDriversToInstall = getEnabledMergeDriversFromConfig(config);
+export async function install(config, mergeDriversArgument) {
+  const mergeDriversToInstall = (() => {
+    if (mergeDriversArgument.length > 0) {
+      return getEnabledMergeDriversFromConfigMatchingKeys(
+        config,
+        mergeDriversArgument,
+      );
+    }
+
+    return getEnabledMergeDriversFromConfig(config);
+  })();
 
   const errors = [];
 
@@ -31,6 +44,26 @@ export async function install(config) {
         }
       }),
     );
+  }
+
+  if (mergeDriversArgument.length > 0) {
+    mergeDriversArgument
+      .filter(
+        (mergeDriver) =>
+          !mergeDriversToInstall.some(([key]) => key === mergeDriver),
+      )
+      .forEach((mergeDriver) => {
+        errors.push(
+          action(
+            `Install ${mergeDriver}, does note exist in the config`,
+            () => {
+              throw new Error(
+                `Merge driver \`${mergeDriver}\` does not exist in the config`,
+              );
+            },
+          ),
+        );
+      });
   }
 
   if (errors.some((error) => error !== undefined)) {
