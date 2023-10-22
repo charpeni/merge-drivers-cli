@@ -7,9 +7,17 @@ import { getAllMergeDriversFromConfig } from '../utils/getMergeDriversFromConfig
  * Uninstalls merge drivers based on the provided config.
  *
  * @param {import("../utils/config.js").Config} config
+ * @param {string[]} mergeDrivers
  */
-export async function uninstall(config) {
-  const mergeDriversToUninstall = getAllMergeDriversFromConfig(config);
+export async function uninstall(config, mergeDrivers) {
+  const mergeDriversToUninstall = (() => {
+    if (mergeDrivers.length) {
+      // Converts an array of merge drivers into an entries array.
+      return mergeDrivers.map((mergeDriver) => [mergeDriver]);
+    }
+
+    return getAllMergeDriversFromConfig(config);
+  })();
 
   const errors = [];
 

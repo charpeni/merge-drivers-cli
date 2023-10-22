@@ -27,8 +27,9 @@ program
 program
   .command('uninstall')
   .description('Uninstalls merge drivers')
-  .action(() => {
-    uninstall(config);
+  .argument('[merge drivers...]')
+  .action((mergeDrivers) => {
+    uninstall(config, mergeDrivers);
   });
 program
   .command('clean')
