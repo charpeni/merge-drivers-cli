@@ -3,6 +3,7 @@ import { Command } from 'commander';
 
 import { install } from './commands/install.js';
 import { uninstall } from './commands/uninstall.js';
+import { clean } from './commands/clean.js';
 
 import { readConfig } from './utils/config.js';
 
@@ -13,15 +14,21 @@ program.description('TODO');
 
 program
   .command('install')
-  .description('TODO')
+  .description('Installs merge drivers')
   .action(() => {
     install(config);
   });
 program
   .command('uninstall')
-  .description('TODO')
+  .description('Uninstalls merge drivers')
   .action(() => {
     uninstall(config);
+  });
+program
+  .command('clean')
+  .description('Cleans merge drivers by uninstalling disabled ones')
+  .action(() => {
+    clean(config);
   });
 
 program.parse(process.argv);
