@@ -15,8 +15,13 @@ program.description('TODO');
 program
   .command('install')
   .description('Installs merge drivers')
-  .action(() => {
-    install(config);
+  .option('-nc, --no-clean', 'Skip cleaning merge drivers before installing')
+  .action(async (options) => {
+    if (options.clean) {
+      await clean(config);
+    }
+
+    await install(config);
   });
 program
   .command('uninstall')
