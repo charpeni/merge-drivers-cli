@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
+import fs from 'node:fs';
 
 import { install } from './commands/install.js';
 import { uninstall } from './commands/uninstall.js';
@@ -7,10 +8,13 @@ import { clean } from './commands/clean.js';
 
 import { readConfig } from './utils/config.js';
 
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const config = readConfig('.merge-drivers.yml');
 const program = new Command();
 
-program.description('TODO');
+program
+  .description('TODO')
+  .version(packageJson.version, '-v, --version', 'Output the current version');
 
 program
   .command('install')
