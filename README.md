@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="100" src="https://github.com/charpeni/merge-drivers-cli/assets/7189823/6982c8dc-b078-477f-82b9-9bbfd9ec3860" alt="CLI's logo">
+  <img height="100" src="https://github.com/charpeni/merge-drivers-cli/assets/7189823/88ff5ee8-ea54-4c0e-b51e-39c9474d1990" alt="CLI's logo">
 </p>
 
 <h3 align="center">
