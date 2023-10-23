@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.org/package/merge-drivers-cli">
+  <a href="https://www.npmjs.org/package/merge-drivers">
     <img src="https://badge.fury.io/js/merge-drivers.svg" alt="Current npm package version." />
   </a>
   <a href="https://www.npmjs.org/package/merge-drivers">
