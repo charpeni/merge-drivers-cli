@@ -1,7 +1,7 @@
 {
   "name": "merge-drivers",
   "version": "1.0.1",
-  "description": "TODO",
+  "description": "Merge Drivers CLI: A command-line interface to conveniently manage custom git merge drivers",
   "bugs": {
     "url": "https://github.com/charpeni/merge-drivers/issues"
   },
