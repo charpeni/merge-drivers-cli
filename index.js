@@ -13,9 +13,7 @@ const config = readConfig('.merge-drivers.yml');
 const program = new Command();
 
 program
-  .description(
-    'Merge Drivers CLI: A command-line interface to conveniently manage custom git merge drivers',
-  )
+  .description(packageJson.description)
   .version(packageJson.version, '-v, --version', 'Output the current version');
 
 program
