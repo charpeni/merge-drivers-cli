@@ -11,13 +11,13 @@
     "cli"
   ],
   "bugs": {
-    "url": "https://github.com/charpeni/merge-drivers/issues"
+    "url": "https://github.com/charpeni/merge-drivers-cli/issues"
   },
-  "homepage": "https://github.com/charpeni/merge-drivers",
-  "readme": "https://github.com/charpeni/merge-drivers#readme",
+  "homepage": "https://github.com/charpeni/merge-drivers-cli",
+  "readme": "https://github.com/charpeni/merge-drivers-cli#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/charpeni/merge-drivers.git"
+    "url": "https://github.com/charpeni/merge-drivers-cli.git"
   },
   "type": "module",
   "exports": "./index.js",
