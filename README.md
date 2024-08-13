@@ -17,10 +17,7 @@
   <a href="https://www.npmjs.org/package/merge-drivers">
     <img src="https://img.shields.io/npm/dm/merge-drivers" alt="Monthly downloads" />
   </a>
-  <a href="https://circleci.com/gh/charpeni/merge-drivers-cli">
-    <img src="https://circleci.com/gh/charpeni/merge-drivers-cli.svg?style=shield" alt="Current CircleCI build status." />
-  </a>
-  <a href="https://circleci.com/gh/charpeni/merge-drivers-cli">
+  <a href="https://makeapullrequest.com">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
   </a>
   <a href="https://github.com/charpeni/merge-drivers-cli/blob/main/LICENSE">
@@ -30,7 +27,7 @@
 
 <hr />
 
-Git offers the ability to define two types of custom merge drivers. The first one is global, accessible through `~/.gitconfig`. The second one is local, accessible through `.git/config`. The problem is that the configuration of these drivers is not very convenient as neither of these solutions are versioned. 
+Git offers the ability to define two types of custom merge drivers. The first one is global, accessible through `~/.gitconfig`. The second one is local, accessible through `.git/config`. The problem is that the configuration of these drivers is not very convenient as neither of these solutions are versioned.
 
 This CLI aims to solve this problem by providing a simple and intuitive interface to manage these drivers.
 
