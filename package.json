@@ -7,6 +7,7 @@
     "merge",
     "driver",
     "drivers",
+    "conflict",
     "cli"
   ],
   "bugs": {
