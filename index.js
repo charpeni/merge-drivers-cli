@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import fs from 'node:fs';
+import path from 'node:path';
 
 import { install } from './commands/install.js';
 import { uninstall } from './commands/uninstall.js';
@@ -8,7 +9,12 @@ import { clean } from './commands/clean.js';
 
 import { readConfig } from './utils/config.js';
 
-const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+const packageJsonPath = path.join(
+  path.dirname(new URL(import.meta.url).pathname),
+  'package.json',
+);
+
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 const config = readConfig('.merge-drivers.yml');
 const program = new Command();
 
