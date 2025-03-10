@@ -1,31 +1,16 @@
-<p align="center">
-  <img height="100" src="https://github.com/charpeni/merge-drivers-cli/assets/7189823/88ff5ee8-ea54-4c0e-b51e-39c9474d1990" alt="CLI's logo">
-</p>
+# Merge Drivers CLI
 
-<h3 align="center">
-  Merge Drivers CLI
-</h3>
+<img height="125" src="https://github.com/charpeni/merge-drivers-cli/assets/7189823/88ff5ee8-ea54-4c0e-b51e-39c9474d1990" alt="CLI's logo" align="right">
 
-<p align="center">
-  A command-line interface to conveniently manage custom git merge drivers.
-</p>
+[![Version](https://badge.fury.io/js/merge-drivers.svg)](https://www.npmjs.org/package/merge-drivers)
+[![Monthly Downloads](https://img.shields.io/npm/dm/merge-drivers)](https://www.npmjs.org/package/merge-drivers)
+[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/charpeni/merge-drivers-cli/blob/main/LICENSE)
 
-<p align="center">
-  <a href="https://www.npmjs.org/package/merge-drivers">
-    <img src="https://badge.fury.io/js/merge-drivers.svg" alt="Current npm package version." />
-  </a>
-  <a href="https://www.npmjs.org/package/merge-drivers">
-    <img src="https://img.shields.io/npm/dm/merge-drivers" alt="Monthly downloads" />
-  </a>
-  <a href="https://makeapullrequest.com">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  </a>
-  <a href="https://github.com/charpeni/merge-drivers-cli/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Merge Drivers CLI is released under the MIT license." />
-  </a>
-</p>
+A command-line interface to conveniently manage custom git merge drivers.
 
-<hr />
+<br />
+
+## Why
 
 Git offers the ability to define two types of custom merge drivers. The first one is global, accessible through `~/.gitconfig`. The second one is local, accessible through `.git/config`. The problem is that the configuration of these drivers is not very convenient as neither of these solutions are versioned.
 
