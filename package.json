@@ -22,6 +22,7 @@
   "type": "module",
   "exports": "./index.js",
   "bin": "index.js",
+  "packageManager": "pnpm@10.15.0",
   "engines": {
     "node": ">=16"
   },
